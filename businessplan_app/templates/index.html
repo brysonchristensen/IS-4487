@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Plan Q&A App</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>Business Plan Q&A App</h1>
+
+    <form action="{% url 'ask' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="query" placeholder="Enter your query" value="{{ query }}">
+        <button type="submit">Ask</button>
+    </form>
+
+    {% if response %}
+    <div id="response-area">
+        <pre>{{ response }}</pre>
+    </div>
+    {% endif %}
+</body>
+</html>
